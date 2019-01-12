@@ -2,9 +2,9 @@
 
 echo Enter NEW configuration name
 read CONFIG_NAME
-DIR="/home/$USER/linuxcnc/qtpyvcp/${CONFIG_NAME,,}"
+DIR="/home/$USER/${CONFIG_NAME,,}"
 echo $DIR
-SUBDIR="/home/$USER/linuxcnc/qtpyvcp/${CONFIG_NAME,,}/${CONFIG_NAME,,}"
+SUBDIR="/home/$USER/${CONFIG_NAME,,}/${CONFIG_NAME,,}"
 echo $SUBDIR
 
 function quit {
