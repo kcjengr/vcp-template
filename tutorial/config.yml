@@ -6,7 +6,7 @@ qtdesigner:
   qss_file: ( application.kwargs.stylesheet )
 
 vcp:
-  name: Basic Tutorial
+  name: MyVCP
   version: v0.0.1
   author: My Name
   description: >

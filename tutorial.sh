@@ -79,7 +79,7 @@ function copy_config {
     cp -r $TEMPLATE_DIR/basic_vcp/* $CONFIG_DIR
     mv $CONFIG_DIR/basic_vcp.hal $CONFIG_DIR/${VCP_NAME,,}.hal
     mv $CONFIG_DIR/basic_vcp.ini $CONFIG_DIR/${VCP_NAME,,}.ini
-    sed -i.bak "s/basic_vcp/${VCP_NAME,,}/g" $CONFIG_DIR/${VCP_NAME,,}.ini
+    sed -i.bak "s/basic_vcp/${VCP_NAME,,}/g; s/Basic VCP/$VCP_NAME/g" $CONFIG_DIR/${VCP_NAME,,}.ini
 
 }
 
@@ -91,8 +91,8 @@ while true; do
         echo Name can not be empty
     elif [ ${VCP_NAME,,} = q ] ; then
         break
-    elif ! [[ $VCP_NAME =~ ^[0-9a-zA-Z_-]+$ ]] ; then
-        echo Name can only contain letters, numbers, dash and underscore
+    elif ! [[ $VCP_NAME =~ ^[0-9a-zA-Z_]+$ ]] ; then
+        echo Name can only contain letters, numbers, and underscores
     elif ! [[ ${VCP_NAME:0:1} =~ ^[a-zA-Z]+$ ]] ; then
         echo Name should start with a letter
     else
