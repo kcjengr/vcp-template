@@ -26,7 +26,7 @@ function create {
 	cp $PWD/LICENSE $DIR
 	cd $DIR
 	set -x
-	pip install -e .
+	pip install --user -e .
 }
 
 if [ -d "$DIR" ]; then
