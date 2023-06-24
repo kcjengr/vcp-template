@@ -20,3 +20,5 @@
 
 # update INI backups
 sim/*.old
+.pydevproject
+.project
