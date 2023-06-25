@@ -9,7 +9,7 @@ function quit {
 
 function copy_vcp {
     DIR="/home/$USER/${1,,}"
-    SUBDIR="/home/$USER/${1,,}/${1,,}"
+    SUBDIR="/home/$USER/${1,,}/src/${1,,}"
     if [ -d "$DIR" ]; then
         while true
         do
@@ -27,21 +27,23 @@ function copy_vcp {
                     echo "Invalid input...";;
             esac
         done
-    else
-        echo Creating the Directory $DIR
-        mkdir -p $DIR
     fi
-    echo Copying the VCP Template to $1
+    echo VCP Template files sourced from $TEMPLATE_DIR
+    echo Copying the VCP Template to $DIR
 
     #echo Copying the Files
     #echo $PWD
-    cp -r $PWD/tutorial $DIR/${VCP_NAME,,}
+    #cp -r $PWD/tutorial $DIR/${VCP_NAME,,}
+
+    cp -r $TEMPLATE_DIR/tutorial/ $DIR
+    # now correct the sub dir for the correct name
+    mv $DIR/src/myvcp $SUBDIR
+
     sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $SUBDIR/config.yml
     sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $SUBDIR/__init__.py
-    cp $PWD/setup.py $DIR
-    sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $DIR/setup.py
-    cp $PWD/README.md $DIR
-    cp $PWD/MANIFEST.in $DIR
+    sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $DIR/pyproject.toml
+    sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $DIR/debian/rules
+    sed -i.bak "s/myvcp/${VCP_NAME,,}/g; s/MyVCP/$VCP_NAME/g" $DIR/debian/control
     cp $PWD/LICENSE $DIR
     cd $DIR
     set -x

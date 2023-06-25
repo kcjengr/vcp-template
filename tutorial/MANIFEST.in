@@ -1,0 +1,2 @@
+graft myvcp/*
+recursive-include myvcp/*/*.yml
