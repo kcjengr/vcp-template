@@ -16,9 +16,9 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,2">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,2">
       <item>
-       <widget class="GcodeBackplot" name="gcodebackplot"/>
+       <widget class="VTKBackPlot" name="vtkbackplot"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -56,7 +56,7 @@
          <widget class="RecentFileComboBox" name="recentfilecombobox"/>
         </item>
         <item>
-         <widget class="GcodeEditor" name="gcodeeditor"/>
+         <widget class="GcodeTextEdit" name="gcodetextedit"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -144,25 +144,25 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>GcodeBackplot</class>
+   <class>ActionButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.action_button</header>
+  </customwidget>
+  <customwidget>
+   <class>VTKBackPlot</class>
    <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.gcode_backplot.gcode_backplot</header>
+   <header>qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>GcodeEditor</class>
-   <extends>QFrame</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
+   <class>GcodeTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
   </customwidget>
   <customwidget>
    <class>RecentFileComboBox</class>
    <extends>QComboBox</extends>
    <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
-  </customwidget>
-  <customwidget>
-   <class>ActionButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

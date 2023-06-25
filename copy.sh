@@ -4,7 +4,7 @@ echo Enter NEW configuration name
 read CONFIG_NAME
 DIR="/home/$USER/${CONFIG_NAME,,}"
 echo $DIR
-SUBDIR="/home/$USER/${CONFIG_NAME,,}/${CONFIG_NAME,,}"
+SUBDIR="/home/$USER/${CONFIG_NAME,,}/src/${CONFIG_NAME,,}"
 echo $SUBDIR
 
 function quit {
@@ -12,21 +12,18 @@ function quit {
 }
 
 function create {
-	echo Creating the Directory $DIR
-	mkdir -p $DIR
-	echo Copying the Files
-	echo $PWD
-	cp -r $PWD/myvcp $DIR/${CONFIG_NAME,,}
+	echo Copying the Files to $DIR
+	echo from $PWD
+	cp -r $PWD/myvcp/ $DIR
+	# now correct the sub dir for the correct name
+	mv $DIR/src/myvcp $SUBDIR
 	sed -i.bak "s/myvcp/${CONFIG_NAME,,}/g; s/MyVCP/$CONFIG_NAME/g" $SUBDIR/config.yml
 	sed -i.bak "s/myvcp/${CONFIG_NAME,,}/g; s/MyVCP/$CONFIG_NAME/g" $SUBDIR/__init__.py
-	cp $PWD/setup.py $DIR
-	sed -i.bak "s/myvcp/${CONFIG_NAME,,}/g; s/MyVCP/$CONFIG_NAME/g" $DIR/setup.py
-	cp $PWD/README.md $DIR
-	cp $PWD/MANIFEST.in $DIR
+	sed -i.bak "s/myvcp/${CONFIG_NAME,,}/g; s/MyVCP/$CONFIG_NAME/g" $DIR/pyproject.toml
 	cp $PWD/LICENSE $DIR
 	cd $DIR
 	set -x
-	pip install --user -e .
+	pip install -e .
 }
 
 if [ -d "$DIR" ]; then
