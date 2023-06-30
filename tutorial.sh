@@ -18,8 +18,6 @@ function copy_vcp {
                 [yY][eE][sS]|[yY])
                     echo Deleting the Directory $DIR
                     rm -r $DIR
-                    echo Creating the Directory $DIR
-                    mkdir -p $DIR
                     break ;;
                 [nN][oO]|[nN])
                     quit;;
@@ -86,6 +84,25 @@ function copy_config {
 }
 
 TEMPLATE_DIR=$(pwd)
+
+# define linuxcnc venv location
+VENV="/home/$USER/.linuxcnc_venv"
+
+# Determine if venv exists, if not create, then activate
+if [ -d "$VENV" ]; then
+	# env exists
+	echo Venv Exists
+else
+	echo Creating Venv
+	python3 -m venv $VENV --system-site-packages
+	# create an alias to enable in a shell when needed
+	echo Create \'cncshell\' alias for later use in shells
+	echo alias cncshell=\'source $VENV/bin/activate\' >> /home/$USER/.bash_aliases
+fi
+
+echo Activate Venv
+source $VENV/bin/activate
+
 
 while true; do
     read -p "Enter a name for the VCP or Q to quit " VCP_NAME
