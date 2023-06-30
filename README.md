@@ -6,10 +6,10 @@ creating your own VCPs.
 
 ## Getting Started
 
-1) Fork this repository to your github account.
+1) Fork this repository to your github account or to other git environment.
 
 2) Clone it to your local machine:
-  `git clone https://github.com/kcjengr/vcp-template.git`
+  `git clone [url-to-your-forked-repo]`
 
 3) Use the scripts 'copy.sh' or 'tutorial.sh' to create a starting VCP
 
@@ -19,11 +19,13 @@ creating your own VCPs.
 
 `editvcp myvcp`
 
+Where `myvcp` is whatever name you ended up using for your new VCP.
 
 ## To Copy
 
 1) Clone the VCP Template:
   `git clone https://github.com/kcjengr/vcp-template.git`
+  
 2) Run the copy.sh script and give it a new name:
   `./copy.sh`
 
@@ -31,6 +33,7 @@ creating your own VCPs.
 
 1) Clone the VCP Template:
   `git clone https://github.com/kcjengr/vcp-template.git`
+  
 2) Run the tutorial.sh script and give it a new name:
   `./tutorial.sh`
 
@@ -51,6 +54,8 @@ run the editvcp command from a shell with the cncshell activate.
 
 i.e.  steps being from within a shell:
 
-`cncshell`
+```
+cncshell
 
-`editvcp myvcp`
+editvcp myvcp
+```
