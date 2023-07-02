@@ -6,16 +6,21 @@ creating your own VCPs.
 
 ## Getting Started
 
-1) Fork this repository to your github account or to other git environment.
+1) Ensure that developement dependencies are installed
+```
+sudo apt install qttools5-dev qttools5-dev-tools python3-wheel python3-venv
+```
 
-2) Clone it to your local machine:
+2) Fork this repository to your github account or to other git environment.
+
+3) Clone it to your local machine:
   `git clone [url-to-your-forked-repo]`
 
-3) Use the scripts 'copy.sh' or 'tutorial.sh' to create a starting VCP
+4) Use the scripts 'copy.sh' or 'tutorial.sh' to create a starting VCP
 
-4) Either follow the tutorial or start your own VCP journey
+5) Either follow the tutorial or start your own VCP journey
 
-5) Edit the layout in QtDesigner by running:
+6) Edit the layout in QtDesigner by running:
 
 `editvcp myvcp`
 

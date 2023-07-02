@@ -3,8 +3,25 @@
 RBG=$'\e[41m'
 NORM=$'\e[0m'
 
-echo Enter NEW configuration name
-read CONFIG_NAME
+function quit {
+	exit
+}
+
+while true; do
+	read -p "Enter NEW configuration name, or q to Quit:" CONFIG_NAME
+    if [ -z $CONFIG_NAME ] ; then
+        echo Name can not be empty
+    elif [ ${CONFIG_NAME,,} = q ] ; then
+		quit
+        break
+    elif ! [[ $CONFIG_NAME =~ ^[0-9a-zA-Z_]+$ ]] ; then
+        echo Name can only contain letters, numbers, and underscores
+    elif ! [[ ${CONFIG_NAME:0:1} =~ ^[a-zA-Z]+$ ]] ; then
+        echo Name should start with a letter
+    else
+        break
+    fi
+done
 DIR="/home/$USER/${CONFIG_NAME,,}"
 echo $DIR
 SUBDIR="/home/$USER/${CONFIG_NAME,,}/src/${CONFIG_NAME,,}"
@@ -12,9 +29,6 @@ echo $SUBDIR
 # define linuxcnc venv location
 VENV="/home/$USER/.linuxcnc_venv"
 
-function quit {
-	exit
-}
 
 function create {
 	echo Copying the Files to $DIR
